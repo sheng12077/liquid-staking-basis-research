@@ -1,0 +1,28 @@
+{
+  "jobs": [
+    {
+      "addresses": [
+        "0xDC24316b9AE028F1497c275EB9192a3Ea0f67022",
+        "0x828b154032950C8ff7CF8085D841723Db2696056"
+      ],
+      "dataset_id": "curve_steth_swaps_full_history",
+      "start_block": 11592551,
+      "topics": [
+        "0x8b3e96f2b889fa771c53c981b40daf005f63f637f1869f707052d15a3dd97140"
+      ]
+    },
+    {
+      "addresses": [
+        "0x889edC2eDab5f40e902b864aD4d7AdE8E412F9B1"
+      ],
+      "dataset_id": "lido_withdrawals_full_history",
+      "start_block": 17172547,
+      "topics": [
+        "0xf0cb471f23fb74ea44b8252eb1881a2dca546288d9f6e90d1a0e82fe0ed342ab",
+        "0x197874c72af6a06fb0aa4fab45fd39c7cb61ac0992159872dc3295207da7e9eb",
+        "0x6ad26c5e238e7d002799f9a5db07e81ef14e37386ae03496d7a7ef04713e145b"
+      ]
+    }
+  ],
+  "schema_version": 1
+}
