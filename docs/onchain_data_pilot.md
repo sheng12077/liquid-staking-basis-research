@@ -98,19 +98,32 @@ The real-data canonicalization pilot produced:
 - block base fee, full-transaction gas used, effective gas price, and total
   transaction fee metadata.
 
-The pilot did not observe a real finalization event in its narrow sample, so
-the `WithdrawalsFinalized` layout is covered by a unit test based on the
-official Solidity declaration. It must also be observed in the production
-backfill audit.
+An additional topic-filtered scan covered 10,000 blocks in 1,000 Free-plan
+chunks and found two real `WithdrawalsFinalized` events. All chunks passed the
+integrity audit, both receipts succeeded, and the decoded event timestamps
+matched their block timestamps. The observed request ranges were 141,519 to
+141,520 and 141,521 to 141,703.
+
+## Purchase decision
+
+The Free-plan feasibility stage is complete. Raw acquisition, resumability,
+integrity auditing, historical contract calls, event decoding, receipt and gas
+enrichment, and canonical Parquet output all worked on real data. The modeled
+PAYG backfill cost is US$0.323874; a US$5 usage cap leaves substantial room for
+retries and additional metadata calls.
+
+Proceeding to PAYG is technically justified, provided the account usage limit
+is set before acquisition begins. The paid backfill must be a separate
+infrastructure work segment and still must not calculate strategy performance.
 
 ## Remaining gates
 
 Before purchasing a full backfill, the next data pilot must verify:
 
 1. proxy implementation version intervals where event semantics changed;
-2. a real observed `WithdrawalsFinalized` event and proxy-version boundary
-   audit;
-3. a production acquisition dry run using wider PAYG-compatible chunks.
+2. a production acquisition dry run using wider PAYG-compatible chunks;
+3. a complete-history reconciliation report before any experiment is
+   preregistered.
 
 No strategy experiment should begin until those data semantics are documented
 and the experiment is preregistered on `main`.
