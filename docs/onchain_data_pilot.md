@@ -53,15 +53,41 @@ Free-plan block-range limit, and estimates compute-unit usage.
 This is a narrow positive feasibility result, not approval for a historical
 backtest or a full paid backfill.
 
+## Deployment registry and backfill estimate
+
+An archive `eth_getCode` binary search recorded the first bytecode block for
+each registered contract:
+
+| Contract | Deployment block | UTC date |
+| --- | ---: | --- |
+| Lido stETH | 11,473,216 | 2020-12-17 |
+| Curve stETH/ETH legacy | 11,592,551 | 2021-01-05 |
+| Lido wstETH | 11,888,477 | 2021-02-19 |
+| Curve stETH/wETH concentrated | 14,759,666 | 2022-05-12 |
+| Lido withdrawal queue | 17,172,547 | 2023-05-02 |
+
+At observed head block `26,421,239`, the complete combined range contained
+14,948,024 blocks and 2,159 calendar days. Assuming one combined address
+filter, 2,000-block PAYG chunks, three daily historical state calls, and
+US$0.525 per million CU:
+
+- Free: 1,494,803 log requests and 89,856,582 CU; this exceeds one monthly
+  Free allowance and would take multiple quota cycles.
+- PAYG: 7,475 log requests and 616,902 CU, estimated at US$0.323874.
+
+The PAYG estimate excludes retries, provider-side range splitting, receipts,
+and future canonicalization queries. A US$5 usage cap provides more than ten
+times the modeled allowance, but payment should wait until event schemas and
+the production acquisition plan are fixed.
+
 ## Remaining gates
 
 Before purchasing a full backfill, the next data pilot must verify:
 
-1. deployment blocks and version intervals for the authoritative contract
-   registry;
+1. proxy implementation version intervals where event semantics changed;
 2. decoded schemas for Curve swaps and Lido withdrawal lifecycle events;
 3. block timestamps, base fees, transaction gas, and canonical Parquet output;
-4. actual request density and PAYG cost for the proposed historical window.
+4. a production acquisition dry run using wider PAYG-compatible chunks.
 
 No strategy experiment should begin until those data semantics are documented
 and the experiment is preregistered on `main`.

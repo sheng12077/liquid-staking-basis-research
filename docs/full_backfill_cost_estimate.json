@@ -1,0 +1,28 @@
+{
+  "assumptions": {
+    "addresses_in_one_log_filter": 5,
+    "payg_chunk_size": 2000,
+    "snapshot_calls_per_day": 3,
+    "usd_per_million_cu": 0.525
+  },
+  "calendar_day_count": 2159,
+  "end_block": 26421239,
+  "free": {
+    "block_count": 14948024,
+    "chunk_count": 1494803,
+    "estimated_usd": 47.174706,
+    "log_request_count": 1494803,
+    "snapshot_call_count": 6477,
+    "total_compute_units": 89856582
+  },
+  "payg": {
+    "block_count": 14948024,
+    "chunk_count": 7475,
+    "estimated_usd": 0.323874,
+    "log_request_count": 7475,
+    "snapshot_call_count": 6477,
+    "total_compute_units": 616902
+  },
+  "start_block": 11473216
+}
+

@@ -1,0 +1,65 @@
+{
+  "chain_id": 1,
+  "deployments": [
+    {
+      "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+      "binary_search_probe_count": 26,
+      "deployment_block": 11473216,
+      "deployment_code_sha256": "a0c39c8f8658ba7d2f91e20e81ca0ecf754ded062ee08b4f24c82902d98c2865",
+      "deployment_time_utc": "2020-12-17T21:59:56+00:00",
+      "deployment_timestamp": 1608242396,
+      "id": "lido_steth",
+      "kind": "token_proxy",
+      "official_source": "https://docs.lido.fi/deployed-contracts/"
+    },
+    {
+      "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "binary_search_probe_count": 25,
+      "deployment_block": 11888477,
+      "deployment_code_sha256": "5719e354e2cf1a08674d0034c090fdc03e25162d8f1d99830a2d95aba54fbd97",
+      "deployment_time_utc": "2021-02-19T16:37:20+00:00",
+      "deployment_timestamp": 1613752640,
+      "id": "lido_wsteth",
+      "kind": "token",
+      "official_source": "https://docs.lido.fi/deployed-contracts/"
+    },
+    {
+      "address": "0x889edC2eDab5f40e902b864aD4d7AdE8E412F9B1",
+      "binary_search_probe_count": 26,
+      "deployment_block": 17172547,
+      "deployment_code_sha256": "6490ced9ee4f0d8815f8c24a7d40acb40cb27cd7ef0fdab57289406d7ef96abc",
+      "deployment_time_utc": "2023-05-02T10:38:47+00:00",
+      "deployment_timestamp": 1683023927,
+      "id": "lido_withdrawal_queue",
+      "kind": "protocol_proxy",
+      "official_source": "https://docs.lido.fi/deployed-contracts/"
+    },
+    {
+      "address": "0xDC24316b9AE028F1497c275EB9192a3Ea0f67022",
+      "binary_search_probe_count": 25,
+      "deployment_block": 11592551,
+      "deployment_code_sha256": "3a4e671f0d4c269a4d09a5ad616455d28f64fedeecc0044a44c00a5185041183",
+      "deployment_time_utc": "2021-01-05T05:18:35+00:00",
+      "deployment_timestamp": 1609823915,
+      "id": "curve_steth_eth_legacy",
+      "kind": "amm_pool",
+      "official_source": "https://docs.lido.fi/deployed-contracts/"
+    },
+    {
+      "address": "0x828b154032950C8ff7CF8085D841723Db2696056",
+      "binary_search_probe_count": 26,
+      "deployment_block": 14759666,
+      "deployment_code_sha256": "3ff6b668594aafe8fba5e576320f04f83e5a260b37ad59c0bbc6f408ca709d0d",
+      "deployment_time_utc": "2022-05-12T06:55:54+00:00",
+      "deployment_timestamp": 1652338554,
+      "id": "curve_steth_weth_concentrated",
+      "kind": "amm_pool",
+      "official_source": "https://docs.lido.fi/deployed-contracts/"
+    }
+  ],
+  "latest_block": 26421239,
+  "latest_block_timestamp": 1794755759,
+  "observed_at_utc": "2026-11-15T15:16:21.666714+00:00",
+  "schema_version": 1,
+  "total_binary_search_probe_count": 128
+}

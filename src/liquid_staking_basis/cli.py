@@ -6,6 +6,7 @@ import os
 from pathlib import Path
 
 from liquid_staking_basis.cost import estimate_cost
+from liquid_staking_basis.registry import discover_deployments, estimate_full_backfill
 from liquid_staking_basis.rpc import EthereumRpcClient, audit_dataset, fetch_logs
 
 DEFAULT_DATA_ROOT = Path("/home/sheng77/working_space/quant_research/data")
@@ -69,6 +70,20 @@ def build_parser() -> argparse.ArgumentParser:
     audit = subparsers.add_parser("audit", help="Verify raw chunks and manifests")
     audit.add_argument("--dataset-id", required=True)
     audit.add_argument("--data-root", type=Path)
+
+    deployments = subparsers.add_parser(
+        "discover-deployments", help="Find first bytecode block for registered contracts"
+    )
+    deployments.add_argument("--registry", type=Path, default=Path("config/contracts.json"))
+    deployments.add_argument("--output", type=Path)
+
+    backfill = subparsers.add_parser(
+        "estimate-backfill", help="Estimate full-history Free and PAYG usage"
+    )
+    backfill.add_argument("--deployments", type=Path, required=True)
+    backfill.add_argument("--snapshot-calls-per-day", type=int, default=3)
+    backfill.add_argument("--payg-chunk-size", type=int, default=2_000)
+    backfill.add_argument("--usd-per-million-cu", type=float, default=0.525)
     return parser
 
 
@@ -93,8 +108,27 @@ def main() -> None:
             raise SystemExit(1)
         return
 
+    if args.command == "estimate-backfill":
+        report = json.loads(args.deployments.read_text(encoding="utf-8"))
+        backfill_result = estimate_full_backfill(
+            report,
+            snapshot_calls_per_day=args.snapshot_calls_per_day,
+            payg_chunk_size=args.payg_chunk_size,
+            usd_per_million_cu=args.usd_per_million_cu,
+        )
+        print(json.dumps(backfill_result, indent=2, sort_keys=True))
+        return
+
     endpoint = rpc_endpoint()
     with EthereumRpcClient(endpoint) as client:
+        if args.command == "discover-deployments":
+            deployment_result = discover_deployments(client, args.registry)
+            rendered = json.dumps(deployment_result, indent=2, sort_keys=True) + "\n"
+            if args.output is not None:
+                args.output.parent.mkdir(parents=True, exist_ok=True)
+                args.output.write_text(rendered, encoding="utf-8")
+            print(rendered, end="")
+            return
         if args.command == "rpc-check":
             chain_id = int(client.call("eth_chainId", []).result, 16)
             latest_block = int(client.call("eth_blockNumber", []).result, 16)
