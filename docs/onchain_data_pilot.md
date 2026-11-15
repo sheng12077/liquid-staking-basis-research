@@ -80,14 +80,37 @@ and future canonicalization queries. A US$5 usage cap provides more than ten
 times the modeled allowance, but payment should wait until event schemas and
 the production acquisition plan are fixed.
 
+## Canonicalization pilot
+
+Official Curve and Lido source declarations were used to register four event
+signatures: Curve `TokenExchange`, Lido `WithdrawalRequested`,
+`WithdrawalsFinalized`, and `WithdrawalClaimed`.
+
+The real-data canonicalization pilot produced:
+
+- four decoded withdrawal events: two requests and two claims;
+- one decoded Curve swap, with the observed direction stETH to WETH;
+- 15 unsupported Transfer/Approval events preserved with their raw topics and
+  data instead of being silently discarded;
+- reconciled unique `(transaction_hash, log_index)` keys;
+- successful receipt statuses and positive block timestamps for every decoded
+  row;
+- block base fee, full-transaction gas used, effective gas price, and total
+  transaction fee metadata.
+
+The pilot did not observe a real finalization event in its narrow sample, so
+the `WithdrawalsFinalized` layout is covered by a unit test based on the
+official Solidity declaration. It must also be observed in the production
+backfill audit.
+
 ## Remaining gates
 
 Before purchasing a full backfill, the next data pilot must verify:
 
 1. proxy implementation version intervals where event semantics changed;
-2. decoded schemas for Curve swaps and Lido withdrawal lifecycle events;
-3. block timestamps, base fees, transaction gas, and canonical Parquet output;
-4. a production acquisition dry run using wider PAYG-compatible chunks.
+2. a real observed `WithdrawalsFinalized` event and proxy-version boundary
+   audit;
+3. a production acquisition dry run using wider PAYG-compatible chunks.
 
 No strategy experiment should begin until those data semantics are documented
 and the experiment is preregistered on `main`.

@@ -5,6 +5,7 @@ import json
 import os
 from pathlib import Path
 
+from liquid_staking_basis.canonical import build_canonical_dataset
 from liquid_staking_basis.cost import estimate_cost
 from liquid_staking_basis.registry import discover_deployments, estimate_full_backfill
 from liquid_staking_basis.rpc import EthereumRpcClient, audit_dataset, fetch_logs
@@ -84,6 +85,12 @@ def build_parser() -> argparse.ArgumentParser:
     backfill.add_argument("--snapshot-calls-per-day", type=int, default=3)
     backfill.add_argument("--payg-chunk-size", type=int, default=2_000)
     backfill.add_argument("--usd-per-million-cu", type=float, default=0.525)
+
+    canonical = subparsers.add_parser(
+        "build-canonical", help="Decode raw logs and enrich them with block and gas metadata"
+    )
+    canonical.add_argument("--dataset-id", required=True)
+    canonical.add_argument("--data-root", type=Path)
     return parser
 
 
@@ -121,6 +128,12 @@ def main() -> None:
 
     endpoint = rpc_endpoint()
     with EthereumRpcClient(endpoint) as client:
+        if args.command == "build-canonical":
+            canonical_result = build_canonical_dataset(
+                client, data_root(args.data_root), args.dataset_id
+            )
+            print(json.dumps(canonical_result, indent=2, sort_keys=True))
+            return
         if args.command == "discover-deployments":
             deployment_result = discover_deployments(client, args.registry)
             rendered = json.dumps(deployment_result, indent=2, sort_keys=True) + "\n"

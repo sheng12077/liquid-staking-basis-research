@@ -28,6 +28,7 @@ lsb-data audit --dataset-id example_contract_logs
 lsb-data discover-deployments --output docs/ethereum_mainnet_deployments.json
 lsb-data estimate-backfill \
   --deployments docs/ethereum_mainnet_deployments.json
+lsb-data build-canonical --dataset-id curve_steth_weth_swaps_pilot
 ```
 
 `fetch-logs` defaults to the Free-plan limit of ten blocks per request. Each

@@ -7,7 +7,7 @@ name = "liquid-staking-basis-research"
 version = "0.1.0"
 description = "Reproducible research for ETH liquid-staking basis"
 requires-python = ">=3.13,<3.14"
-dependencies = ["httpx>=0.28,<1"]
+dependencies = ["httpx>=0.28,<1", "polars>=1,<2", "pyarrow>=18,<24"]
 
 [project.scripts]
 lsb-data = "liquid_staking_basis.cli:main"
