@@ -194,3 +194,72 @@ def fetch_logs(
         "manifest_path": str(manifest_path),
     }
 
+
+def audit_dataset(data_root: Path, dataset_id: str) -> dict[str, object]:
+    if DATASET_ID_PATTERN.fullmatch(dataset_id) is None:
+        raise ValueError("invalid dataset_id")
+    dataset_dir = data_root / "raw" / "ethereum_rpc" / dataset_id
+    chunk_dir = dataset_dir / "chunks"
+    manifest_dir = dataset_dir / "manifests"
+    chunks = sorted(chunk_dir.glob("*.json"))
+    manifests = sorted(manifest_dir.glob("*.json"))
+    errors: list[str] = []
+    chunk_digests: dict[Path, str] = {}
+    chunk_log_counts: dict[Path, int] = {}
+
+    if not chunks:
+        errors.append("no raw chunks found")
+    if not manifests:
+        errors.append("no manifests found")
+
+    forbidden_markers = (b"ETHEREUM_RPC_URL", b"alchemy.com/v2/")
+    for path in chunks:
+        body = path.read_bytes()
+        digest = hashlib.sha256(body).hexdigest()
+        chunk_digests[path.resolve()] = digest
+        if not path.stem.endswith(digest[:12]):
+            errors.append(f"filename checksum mismatch: {path.name}")
+        if any(marker in body for marker in forbidden_markers):
+            errors.append(f"possible endpoint disclosure: {path.name}")
+        try:
+            decoded = json.loads(body)
+        except json.JSONDecodeError:
+            errors.append(f"invalid JSON: {path.name}")
+            continue
+        result = decoded.get("result") if isinstance(decoded, dict) else None
+        if not isinstance(result, list):
+            errors.append(f"RPC result is not a list: {path.name}")
+            continue
+        chunk_log_counts[path.resolve()] = len(result)
+
+    reference_count = 0
+    for manifest_path in manifests:
+        body = manifest_path.read_bytes()
+        if any(marker in body for marker in forbidden_markers):
+            errors.append(f"possible endpoint disclosure: {manifest_path.name}")
+        try:
+            manifest = json.loads(body)
+        except json.JSONDecodeError:
+            errors.append(f"invalid manifest JSON: {manifest_path.name}")
+            continue
+        for record in manifest.get("chunks", []):
+            reference_count += 1
+            path = (data_root / record["path"]).resolve()
+            if path not in chunk_digests:
+                errors.append(f"missing referenced chunk: {record['path']}")
+                continue
+            if record.get("sha256") != chunk_digests[path]:
+                errors.append(f"manifest checksum mismatch: {record['path']}")
+            if record.get("log_count") != chunk_log_counts.get(path):
+                errors.append(f"manifest log count mismatch: {record['path']}")
+
+    return {
+        "dataset_id": dataset_id,
+        "passed": not errors,
+        "chunk_count": len(chunks),
+        "manifest_count": len(manifests),
+        "manifest_reference_count": reference_count,
+        "total_unique_logs": sum(chunk_log_counts.values()),
+        "errors": errors,
+    }
+

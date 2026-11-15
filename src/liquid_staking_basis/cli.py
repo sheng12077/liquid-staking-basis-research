@@ -6,7 +6,7 @@ import os
 from pathlib import Path
 
 from liquid_staking_basis.cost import estimate_cost
-from liquid_staking_basis.rpc import EthereumRpcClient, fetch_logs
+from liquid_staking_basis.rpc import EthereumRpcClient, audit_dataset, fetch_logs
 
 DEFAULT_DATA_ROOT = Path("/home/sheng77/working_space/quant_research/data")
 ZERO_ADDRESS = "0x0000000000000000000000000000000000000000"
@@ -65,6 +65,10 @@ def build_parser() -> argparse.ArgumentParser:
     fetch.add_argument("--plan", choices=("free", "payg"), default="free")
     fetch.add_argument("--request-delay", type=float, default=0.15)
     fetch.add_argument("--data-root", type=Path)
+
+    audit = subparsers.add_parser("audit", help="Verify raw chunks and manifests")
+    audit.add_argument("--dataset-id", required=True)
+    audit.add_argument("--data-root", type=Path)
     return parser
 
 
@@ -80,6 +84,13 @@ def main() -> None:
             args.usd_per_million_cu,
         )
         print(json.dumps(estimate_result.to_dict(), indent=2, sort_keys=True))
+        return
+
+    if args.command == "audit":
+        audit_result = audit_dataset(data_root(args.data_root), args.dataset_id)
+        print(json.dumps(audit_result, indent=2, sort_keys=True))
+        if not audit_result["passed"]:
+            raise SystemExit(1)
         return
 
     endpoint = rpc_endpoint()

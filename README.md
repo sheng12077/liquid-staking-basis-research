@@ -24,6 +24,7 @@ lsb-data fetch-logs \
   --address 0x0000000000000000000000000000000000000000 \
   --start-block 12000000 \
   --end-block 12000009
+lsb-data audit --dataset-id example_contract_logs
 ```
 
 `fetch-logs` defaults to the Free-plan limit of ten blocks per request. Each

@@ -4,7 +4,12 @@ from typing import Any
 
 import pytest
 
-from liquid_staking_basis.rpc import RpcEnvelope, fetch_logs, validate_fetch_inputs
+from liquid_staking_basis.rpc import (
+    RpcEnvelope,
+    audit_dataset,
+    fetch_logs,
+    validate_fetch_inputs,
+)
 
 
 class FakeClient:
@@ -53,4 +58,28 @@ def test_fetch_logs_is_resumable_and_manifest_has_no_endpoint(tmp_path: Path) ->
     manifests = sorted((tmp_path / "raw/ethereum_rpc/pilot/manifests").glob("*.json"))
     assert len(manifests) == 2
     assert "RPC_URL" not in manifests[-1].read_text()
+    audit = audit_dataset(tmp_path, "pilot")
+    assert audit["passed"] is True
+    assert audit["chunk_count"] == 2
+    assert audit["manifest_reference_count"] == 4
+
+
+def test_audit_detects_corrupted_chunk(tmp_path: Path) -> None:
+    client = FakeClient()
+    fetch_logs(
+        client=client,
+        data_root=tmp_path,
+        dataset_id="pilot",
+        addresses=("0x0000000000000000000000000000000000000000",),
+        start_block=100,
+        end_block=109,
+        request_delay_seconds=0,
+    )
+    chunk = next((tmp_path / "raw/ethereum_rpc/pilot/chunks").glob("*.json"))
+    chunk.write_text("{}")
+
+    audit = audit_dataset(tmp_path, "pilot")
+
+    assert audit["passed"] is False
+    assert audit["errors"]
 
