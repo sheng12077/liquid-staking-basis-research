@@ -1,0 +1,37 @@
+{
+  "chain_id": 1,
+  "contracts": [
+    {
+      "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+      "id": "lido_steth",
+      "kind": "token_proxy",
+      "official_source": "https://docs.lido.fi/deployed-contracts/"
+    },
+    {
+      "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "id": "lido_wsteth",
+      "kind": "token",
+      "official_source": "https://docs.lido.fi/deployed-contracts/"
+    },
+    {
+      "address": "0x889edC2eDab5f40e902b864aD4d7AdE8E412F9B1",
+      "id": "lido_withdrawal_queue",
+      "kind": "protocol_proxy",
+      "official_source": "https://docs.lido.fi/deployed-contracts/"
+    },
+    {
+      "address": "0xDC24316b9AE028F1497c275EB9192a3Ea0f67022",
+      "id": "curve_steth_eth_legacy",
+      "kind": "amm_pool",
+      "official_source": "https://docs.lido.fi/deployed-contracts/"
+    },
+    {
+      "address": "0x828b154032950C8ff7CF8085D841723Db2696056",
+      "id": "curve_steth_weth_concentrated",
+      "kind": "amm_pool",
+      "official_source": "https://docs.lido.fi/deployed-contracts/"
+    }
+  ],
+  "schema_version": 1
+}
+

@@ -1,0 +1,34 @@
+{
+  "events": [
+    {
+      "id": "curve_token_exchange",
+      "indexed_fields": ["buyer"],
+      "signature": "TokenExchange(address,int128,uint256,int128,uint256)",
+      "source": "https://github.com/curvefi/curve-contract/blob/master/contracts/pools/steth/StableSwapSTETH.vy",
+      "topic0": "0x8b3e96f2b889fa771c53c981b40daf005f63f637f1869f707052d15a3dd97140"
+    },
+    {
+      "id": "lido_withdrawal_requested",
+      "indexed_fields": ["requestId", "requestor", "owner"],
+      "signature": "WithdrawalRequested(uint256,address,address,uint256,uint256)",
+      "source": "https://github.com/lidofinance/core/blob/master/contracts/0.8.9/WithdrawalQueueBase.sol",
+      "topic0": "0xf0cb471f23fb74ea44b8252eb1881a2dca546288d9f6e90d1a0e82fe0ed342ab"
+    },
+    {
+      "id": "lido_withdrawals_finalized",
+      "indexed_fields": ["from", "to"],
+      "signature": "WithdrawalsFinalized(uint256,uint256,uint256,uint256,uint256)",
+      "source": "https://github.com/lidofinance/core/blob/master/contracts/0.8.9/WithdrawalQueueBase.sol",
+      "topic0": "0x197874c72af6a06fb0aa4fab45fd39c7cb61ac0992159872dc3295207da7e9eb"
+    },
+    {
+      "id": "lido_withdrawal_claimed",
+      "indexed_fields": ["requestId", "owner", "receiver"],
+      "signature": "WithdrawalClaimed(uint256,address,address,uint256)",
+      "source": "https://github.com/lidofinance/core/blob/master/contracts/0.8.9/WithdrawalQueueBase.sol",
+      "topic0": "0x6ad26c5e238e7d002799f9a5db07e81ef14e37386ae03496d7a7ef04713e145b"
+    }
+  ],
+  "schema_version": 1
+}
+
