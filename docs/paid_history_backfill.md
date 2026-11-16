@@ -79,7 +79,7 @@ Transfer/Approval logs.
 This conclusion applies only to raw Curve swap and Lido withdrawal events. It
 does not establish backtest readiness or strategy profitability.
 
-## Remaining gates before Experiment 015
+## Remaining gates before Experiment 001
 
 1. Document proxy implementation intervals and confirm event semantics across
    upgrades.

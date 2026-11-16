@@ -55,9 +55,10 @@ Mark data are missing 63 hours on three dates:
 
 Consequently, the prior 23:00 UTC mark is missing for observations on 2022-10-03,
 2023-02-25, and 2026-06-30. The 00:00 UTC mark bar on each observation date exists.
-Experiment 015 must pre-register one of two conservative treatments before performance
-is viewed: skip those decisions entirely, or carry forward the last available mark with
-an explicit eight-hour staleness flag. Skipping is simpler and preferred.
+Experiment 001 must pre-register its treatment before performance is viewed. It uses
+the greater of the last known mark and `1.01 * perpetual_high` for short-side margin
+testing during missing hours. None of the three affected observations is a scheduled
+monthly hedge decision, so the proxy cannot create a fill signal.
 
 Index and premium series are auxiliary, not execution sources. They must not be silently
 imputed. If used in a later signal or risk rule, their missing observations require a
@@ -99,7 +100,7 @@ OKX is suitable for a secondary robustness check, but not as a replacement for t
 longer Binance primary history. Cross-venue validation must be declared before viewing
 strategy performance and should not be used to choose whichever venue backtests better.
 
-## Remaining limits before Experiment 015
+## Remaining limits before Experiment 001
 
 - Hourly OHLC does not reveal intrabar liquidation paths. Liquidation safety must use
   mark-price high/low stress, conservative maintenance-margin assumptions, and low gross

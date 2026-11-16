@@ -135,5 +135,5 @@ approval to calculate or tune strategy performance.
    funding, and tradable price data.
 3. Define the exact economic trade, execution delay, fees, gas, slippage,
    funding, inventory, withdrawal latency, and liquidation assumptions.
-4. Preregister the fixed Experiment 015 rules and acceptance thresholds on
+4. Preregister the fixed Experiment 001 rules and acceptance thresholds on
    `main` before calculating returns.
