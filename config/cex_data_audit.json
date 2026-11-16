@@ -1,0 +1,6 @@
+{
+  "dataset": "binance_eth_usdm_and_spot_hourly",
+  "end_exclusive": "2026-11-01T00:00:00Z",
+  "purpose": "Data-feasibility and point-in-time alignment audit only; no strategy returns",
+  "start": "2021-01-01T00:00:00Z"
+}

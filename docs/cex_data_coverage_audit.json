@@ -1,0 +1,329 @@
+{
+  "onchain_alignment": {
+    "aligned_daily_rows": 2125,
+    "earliest_conservative_execution_rule": "execute no earlier than the close of the 00:00 UTC bar, after the on-chain snapshot is observable",
+    "first_observation_date": "2021-01-06",
+    "following_block_at_or_after_target": true,
+    "known_cex_bar_rule": "use the prior completed hourly bar (23:00 UTC bar)",
+    "last_observation_date": "2026-10-31",
+    "maximum_selected_block_lag_seconds": 107,
+    "selected_block_strictly_before_target": true
+  },
+  "required_integrity_checks_passed": true,
+  "research_ready": true,
+  "scope": {
+    "end_exclusive": "2026-11-01T00:00:00Z",
+    "performance_metrics_computed": false,
+    "start": "2021-01-01T00:00:00Z"
+  },
+  "series": {
+    "eth_funding": {
+      "duplicate_timestamps": 0,
+      "file_count": 70,
+      "first_timestamp": "2021-01-01T00:00:00.002000Z",
+      "in_scope_rows": 6390,
+      "interval_counts": [
+        {
+          "funding_interval_hours": 8,
+          "len": 6390
+        }
+      ],
+      "interval_mismatches": 0,
+      "last_timestamp": "2026-10-31T16:00:00Z",
+      "maximum_gap_hours": 8.000013055555556,
+      "null_or_nonfinite_rates": 0,
+      "row_count": 6390,
+      "spec": {
+        "kind": "funding",
+        "required": true,
+        "series_id": "eth_funding"
+      }
+    },
+    "eth_index_bars": {
+      "coverage": 0.9981220657276996,
+      "daily_alignment": {
+        "conservative_execution_bar_missing_count": 4,
+        "conservative_execution_bar_missing_observations": [
+          "2022-07-31T00:00:00Z",
+          "2022-10-02T00:00:00Z",
+          "2023-02-24T00:00:00Z",
+          "2026-06-29T00:00:00Z"
+        ],
+        "prior_completed_bar_missing_count": 4,
+        "prior_completed_bar_missing_observations": [
+          "2022-08-01T00:00:00Z",
+          "2022-10-03T00:00:00Z",
+          "2023-02-25T00:00:00Z",
+          "2026-06-30T00:00:00Z"
+        ]
+      },
+      "duplicate_timestamps": 0,
+      "expected_hours": 51120,
+      "file_count": 70,
+      "first_timestamp": "2021-01-01T00:00:00Z",
+      "in_scope_rows": 51024,
+      "invalid_ohlc_rows": 0,
+      "last_timestamp": "2026-10-31T23:00:00Z",
+      "missing_hours": 96,
+      "missing_ranges": [
+        {
+          "count": 24,
+          "end": "2022-07-31T23:00:00Z",
+          "start": "2022-07-31T00:00:00Z"
+        },
+        {
+          "count": 24,
+          "end": "2022-10-02T23:00:00Z",
+          "start": "2022-10-02T00:00:00Z"
+        },
+        {
+          "count": 24,
+          "end": "2023-02-24T23:00:00Z",
+          "start": "2023-02-24T00:00:00Z"
+        },
+        {
+          "count": 24,
+          "end": "2026-06-29T23:00:00Z",
+          "start": "2026-06-29T00:00:00Z"
+        }
+      ],
+      "nonpositive_price_rows": 0,
+      "row_count": 51024,
+      "spec": {
+        "kind": "bars",
+        "required": false,
+        "series_id": "eth_index_bars"
+      }
+    },
+    "eth_mark_bars": {
+      "coverage": 0.9987676056338028,
+      "daily_alignment": {
+        "conservative_execution_bar_missing_count": 0,
+        "conservative_execution_bar_missing_observations": [],
+        "prior_completed_bar_missing_count": 3,
+        "prior_completed_bar_missing_observations": [
+          "2022-10-03T00:00:00Z",
+          "2023-02-25T00:00:00Z",
+          "2026-06-30T00:00:00Z"
+        ]
+      },
+      "duplicate_timestamps": 0,
+      "expected_hours": 51120,
+      "file_count": 71,
+      "first_timestamp": "2021-01-01T00:00:00Z",
+      "in_scope_rows": 51057,
+      "invalid_ohlc_rows": 0,
+      "last_timestamp": "2026-10-31T23:00:00Z",
+      "missing_hours": 63,
+      "missing_ranges": [
+        {
+          "count": 7,
+          "end": "2022-10-02T07:00:00Z",
+          "start": "2022-10-02T01:00:00Z"
+        },
+        {
+          "count": 7,
+          "end": "2022-10-02T15:00:00Z",
+          "start": "2022-10-02T09:00:00Z"
+        },
+        {
+          "count": 7,
+          "end": "2022-10-02T23:00:00Z",
+          "start": "2022-10-02T17:00:00Z"
+        },
+        {
+          "count": 7,
+          "end": "2023-02-24T07:00:00Z",
+          "start": "2023-02-24T01:00:00Z"
+        },
+        {
+          "count": 7,
+          "end": "2023-02-24T15:00:00Z",
+          "start": "2023-02-24T09:00:00Z"
+        },
+        {
+          "count": 7,
+          "end": "2023-02-24T23:00:00Z",
+          "start": "2023-02-24T17:00:00Z"
+        },
+        {
+          "count": 7,
+          "end": "2026-06-29T07:00:00Z",
+          "start": "2026-06-29T01:00:00Z"
+        },
+        {
+          "count": 7,
+          "end": "2026-06-29T15:00:00Z",
+          "start": "2026-06-29T09:00:00Z"
+        },
+        {
+          "count": 7,
+          "end": "2026-06-29T23:00:00Z",
+          "start": "2026-06-29T17:00:00Z"
+        }
+      ],
+      "nonpositive_price_rows": 0,
+      "row_count": 51057,
+      "spec": {
+        "kind": "bars",
+        "required": true,
+        "series_id": "eth_mark_bars"
+      }
+    },
+    "eth_perpetual_bars": {
+      "coverage": 1.0,
+      "daily_alignment": {
+        "conservative_execution_bar_missing_count": 0,
+        "conservative_execution_bar_missing_observations": [],
+        "prior_completed_bar_missing_count": 0,
+        "prior_completed_bar_missing_observations": []
+      },
+      "duplicate_timestamps": 0,
+      "expected_hours": 51120,
+      "file_count": 70,
+      "first_timestamp": "2021-01-01T00:00:00Z",
+      "in_scope_rows": 51120,
+      "invalid_ohlc_rows": 0,
+      "last_timestamp": "2026-10-31T23:00:00Z",
+      "missing_hours": 0,
+      "missing_ranges": [],
+      "nonpositive_price_rows": 0,
+      "row_count": 51120,
+      "spec": {
+        "kind": "bars",
+        "required": true,
+        "series_id": "eth_perpetual_bars"
+      }
+    },
+    "eth_premium_bars": {
+      "coverage": 0.996244131455399,
+      "daily_alignment": {
+        "conservative_execution_bar_missing_count": 8,
+        "conservative_execution_bar_missing_observations": [
+          "2021-07-01T00:00:00Z",
+          "2021-07-24T00:00:00Z",
+          "2021-07-25T00:00:00Z",
+          "2021-07-26T00:00:00Z",
+          "2021-07-27T00:00:00Z",
+          "2022-10-02T00:00:00Z",
+          "2023-04-09T00:00:00Z",
+          "2026-06-29T00:00:00Z"
+        ],
+        "prior_completed_bar_missing_count": 8,
+        "prior_completed_bar_missing_observations": [
+          "2021-07-02T00:00:00Z",
+          "2021-07-25T00:00:00Z",
+          "2021-07-26T00:00:00Z",
+          "2021-07-27T00:00:00Z",
+          "2021-07-28T00:00:00Z",
+          "2022-10-03T00:00:00Z",
+          "2023-04-10T00:00:00Z",
+          "2026-06-30T00:00:00Z"
+        ]
+      },
+      "duplicate_timestamps": 0,
+      "expected_hours": 51120,
+      "file_count": 70,
+      "first_timestamp": "2021-01-01T00:00:00Z",
+      "in_scope_rows": 50928,
+      "invalid_ohlc_rows": 0,
+      "last_timestamp": "2026-10-31T23:00:00Z",
+      "missing_hours": 192,
+      "missing_ranges": [
+        {
+          "count": 24,
+          "end": "2021-07-01T23:00:00Z",
+          "start": "2021-07-01T00:00:00Z"
+        },
+        {
+          "count": 96,
+          "end": "2021-07-27T23:00:00Z",
+          "start": "2021-07-24T00:00:00Z"
+        },
+        {
+          "count": 24,
+          "end": "2022-10-02T23:00:00Z",
+          "start": "2022-10-02T00:00:00Z"
+        },
+        {
+          "count": 24,
+          "end": "2023-04-09T23:00:00Z",
+          "start": "2023-04-09T00:00:00Z"
+        },
+        {
+          "count": 24,
+          "end": "2026-06-29T23:00:00Z",
+          "start": "2026-06-29T00:00:00Z"
+        }
+      ],
+      "nonpositive_price_rows": 46396,
+      "row_count": 50928,
+      "spec": {
+        "kind": "bars",
+        "required": false,
+        "series_id": "eth_premium_bars"
+      }
+    },
+    "eth_spot_bars": {
+      "coverage": 0.9997261345852895,
+      "daily_alignment": {
+        "conservative_execution_bar_missing_count": 0,
+        "conservative_execution_bar_missing_observations": [],
+        "prior_completed_bar_missing_count": 0,
+        "prior_completed_bar_missing_observations": []
+      },
+      "duplicate_timestamps": 0,
+      "expected_hours": 51120,
+      "file_count": 70,
+      "first_timestamp": "2021-01-01T00:00:00Z",
+      "in_scope_rows": 51106,
+      "invalid_ohlc_rows": 0,
+      "last_timestamp": "2026-10-31T23:00:00Z",
+      "missing_hours": 14,
+      "missing_ranges": [
+        {
+          "count": 1,
+          "end": "2021-02-11T04:00:00Z",
+          "start": "2021-02-11T04:00:00Z"
+        },
+        {
+          "count": 1,
+          "end": "2021-03-06T02:00:00Z",
+          "start": "2021-03-06T02:00:00Z"
+        },
+        {
+          "count": 2,
+          "end": "2021-04-20T03:00:00Z",
+          "start": "2021-04-20T02:00:00Z"
+        },
+        {
+          "count": 3,
+          "end": "2021-04-25T07:00:00Z",
+          "start": "2021-04-25T05:00:00Z"
+        },
+        {
+          "count": 4,
+          "end": "2021-08-13T05:00:00Z",
+          "start": "2021-08-13T02:00:00Z"
+        },
+        {
+          "count": 2,
+          "end": "2021-09-29T08:00:00Z",
+          "start": "2021-09-29T07:00:00Z"
+        },
+        {
+          "count": 1,
+          "end": "2023-03-24T13:00:00Z",
+          "start": "2023-03-24T13:00:00Z"
+        }
+      ],
+      "nonpositive_price_rows": 0,
+      "row_count": 51106,
+      "spec": {
+        "kind": "bars",
+        "required": true,
+        "series_id": "eth_spot_bars"
+      }
+    }
+  }
+}
