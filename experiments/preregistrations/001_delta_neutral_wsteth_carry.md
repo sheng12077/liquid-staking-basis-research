@@ -252,12 +252,24 @@ replace a failed `LSB-P1`.
 - Binance ETH withdrawal allowance: 0.005 ETH at entry.
 - Entry gas: 350,000 gas units.
 - Exit gas: 350,000 gas units.
-- Gas price: observation-block base fee plus a fixed 2 gwei priority fee.
+- Gas price after EIP-1559 activation: observation-block base fee plus a fixed 2 gwei
+  priority fee. Before `baseFeePerGas` exists, use the median legacy `gasPrice` of all
+  transactions in the observation block; do not add a second priority-fee allowance.
 - Cash and futures collateral yield: zero.
 
 The gas budgets include Curve exchange, approvals, wrap/unwrap, and the final ETH
 transfer as conservative aggregate allowances. No maker, VIP, BNB, referral, rebate,
 MEV rebate, lending yield, or promotional discount is permitted.
+
+### Pre-performance gas-semantic clarification
+
+On 2026-11-16, the first execution-state acquisition stopped on 2021-02-20 before
+writing a snapshot because the selected pre-London block correctly had no
+`baseFeePerGas`. No strategy return, NAV, or acceptance metric had been calculated or
+viewed. The legacy-block median rule above was therefore registered before resuming
+data acquisition. It resolves a protocol-era data absence only; it does not change
+gas units, costs after EIP-1559, strategy rules, stress multipliers, or acceptance
+thresholds.
 
 ### Cost stresses
 
