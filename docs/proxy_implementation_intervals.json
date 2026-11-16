@@ -1,0 +1,158 @@
+{
+  "audit_end_block": 26421585,
+  "direct_contracts": [
+    {
+      "address": "0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0",
+      "architecture": "direct_deployment",
+      "audit_end_block": 26421585,
+      "deployment_block": 11888477,
+      "deployment_code_sha256": "5719e354e2cf1a08674d0034c090fdc03e25162d8f1d99830a2d95aba54fbd97",
+      "end_code_sha256": "5719e354e2cf1a08674d0034c090fdc03e25162d8f1d99830a2d95aba54fbd97",
+      "errors": [],
+      "id": "lido_wsteth",
+      "passed": true,
+      "source": "https://github.com/lidofinance/core/blob/master/contracts/0.6.12/WstETH.sol"
+    },
+    {
+      "address": "0xdc24316b9ae028f1497c275eb9192a3ea0f67022",
+      "architecture": "direct_deployment",
+      "audit_end_block": 26421585,
+      "deployment_block": 11592551,
+      "deployment_code_sha256": "3a4e671f0d4c269a4d09a5ad616455d28f64fedeecc0044a44c00a5185041183",
+      "end_code_sha256": "3a4e671f0d4c269a4d09a5ad616455d28f64fedeecc0044a44c00a5185041183",
+      "errors": [],
+      "id": "curve_steth_eth_legacy",
+      "passed": true,
+      "source": "https://github.com/curvefi/curve-contract/blob/master/contracts/pools/steth/StableSwapSTETH.vy"
+    },
+    {
+      "address": "0x828b154032950c8ff7cf8085d841723db2696056",
+      "architecture": "direct_deployment",
+      "audit_end_block": 26421585,
+      "deployment_block": 14759666,
+      "deployment_code_sha256": "3ff6b668594aafe8fba5e576320f04f83e5a260b37ad59c0bbc6f408ca709d0d",
+      "end_code_sha256": "3ff6b668594aafe8fba5e576320f04f83e5a260b37ad59c0bbc6f408ca709d0d",
+      "errors": [],
+      "id": "curve_steth_weth_concentrated",
+      "passed": true,
+      "source": "https://docs.curve.finance/developer/integration/stableswap-ng/"
+    }
+  ],
+  "generated_at_utc": "2026-11-16T03:33:23.077165+00:00",
+  "passed": true,
+  "proxies": [
+    {
+      "address": "0xae7ab96520de3a18e5e111b5eaab095312d7fe84",
+      "architecture": "aragon_implementation_call",
+      "audit_end_block": 26421585,
+      "current_implementation": "0x028271e30a695c0527a0c50ca30603fed004cdb0",
+      "deployment_block": 11473216,
+      "errors": [],
+      "id": "lido_steth",
+      "implementation_interval_count": 6,
+      "intervals": [
+        {
+          "end_block": 13500146,
+          "evidence": "event",
+          "implementation": "0x20dc62d5904633cc6a5e34bec87a048e80c92e97",
+          "implementation_code_sha256": "19ac277cf0f19ab5f2cce5ae7d862e8da5b4eb3693a00ff191f974df0c63b858",
+          "log_index": 155,
+          "start_block": 11473216,
+          "start_time_utc": "2020-12-17T21:59:56+00:00",
+          "transaction_hash": "0x3feabd79e8549ad68d1827c074fa7123815c80206498946293d5373a160fd866"
+        },
+        {
+          "end_block": 14860267,
+          "evidence": "event",
+          "implementation": "0xc7b5af82b05eb3b64f12241b04b2cf14469e39f7",
+          "implementation_code_sha256": "dfc23ce24eb9e1df1c7072a48a24fde0680c23f77d503c5e50a7e8d1e033c48a",
+          "log_index": 76,
+          "start_block": 13500147,
+          "start_time_utc": "2021-10-27T15:15:50+00:00",
+          "transaction_hash": "0xd6e3234e9701e032cd699c5b2e7cca0366443ce8d9007ab5226fb1ae6faaeba5"
+        },
+        {
+          "end_block": 17266003,
+          "evidence": "event",
+          "implementation": "0x47ebab13b806773ec2a2d16873e2df770d130b50",
+          "implementation_code_sha256": "8e9bf01f47adc58909d46f69295c1c68efaf9dac341a2c509ec74d697d8ff73e",
+          "log_index": 507,
+          "start_block": 14860268,
+          "start_time_utc": "2022-05-28T12:27:55+00:00",
+          "transaction_hash": "0x11a48020ae69cf08bd063f1fbc8ecf65bd057015aaa991bf507dbc598aadb68e"
+        },
+        {
+          "end_block": 24083112,
+          "evidence": "event",
+          "implementation": "0x17144556fd3424edc8fc8a4c940b2d04936d17eb",
+          "implementation_code_sha256": "b2a54d53a4438ea92991425a3fcae181d52d194deedd1cb075a6bcb90e0eb8a3",
+          "log_index": 43,
+          "start_block": 17266004,
+          "start_time_utc": "2023-05-15T15:15:59+00:00",
+          "transaction_hash": "0x592d68a259af899fb435da0ac08c2fd500cb423f37f1d8ce8e3120cb84186b21"
+        },
+        {
+          "end_block": 25603296,
+          "evidence": "event",
+          "implementation": "0x6ca84080381e43938476814be61b779a8bb6a600",
+          "implementation_code_sha256": "93f2f43e120c1d75ba47cceaa0457167f31db670fc990cf3b4d5ba83ebee3757",
+          "log_index": 306,
+          "start_block": 24083113,
+          "start_time_utc": "2025-12-24T14:35:47+00:00",
+          "transaction_hash": "0xf143303a719ee2e0c494efce07f889f7c4cd432d9ed993b410c20ad1c904d38f"
+        },
+        {
+          "end_block": 26421585,
+          "evidence": "event",
+          "implementation": "0x028271e30a695c0527a0c50ca30603fed004cdb0",
+          "implementation_code_sha256": "c60a3b8430fbf46ed14f52c4d30b50c14c8eb359e041014d2936846d6fd01bb8",
+          "log_index": 262,
+          "start_block": 25603297,
+          "start_time_utc": "2026-07-24T14:47:59+00:00",
+          "transaction_hash": "0x297042b4e5fd41399634f124beec7afc37712bc3374c3419b72932caf52714aa"
+        }
+      ],
+      "passed": true,
+      "proxy_code_sha256": "a0c39c8f8658ba7d2f91e20e81ca0ecf754ded062ee08b4f24c82902d98c2865",
+      "raw_upgrade_event_count": 6,
+      "source": "https://github.com/aragon/aragonOS/blob/next/contracts/apps/AppProxyUpgradeable.sol"
+    },
+    {
+      "address": "0x889edc2edab5f40e902b864ad4d7ade8e412f9b1",
+      "architecture": "eip1967_storage",
+      "audit_end_block": 26421585,
+      "current_implementation": "0xe42c659dc09109566720ea8b2de186c2be7d94d9",
+      "deployment_block": 17172547,
+      "errors": [],
+      "id": "lido_withdrawal_queue",
+      "implementation_interval_count": 2,
+      "intervals": [
+        {
+          "end_block": 17266003,
+          "evidence": "event",
+          "implementation": "0x6f6541c2203196feedd14cd2c09550da1cbeda31",
+          "implementation_code_sha256": "a5e01044570a75435d6fdddf546a6a9f311d501d66916dd224d2388813c04990",
+          "log_index": 140,
+          "start_block": 17172547,
+          "start_time_utc": "2023-05-02T10:38:47+00:00",
+          "transaction_hash": "0x98c2170be034f750f5006cb69ea0aeeaf0858b11f6324ee53d582fa4dd49bc1a"
+        },
+        {
+          "end_block": 26421585,
+          "evidence": "event",
+          "implementation": "0xe42c659dc09109566720ea8b2de186c2be7d94d9",
+          "implementation_code_sha256": "95501f0f9cdc2f936c2c26dc1a0ac3a6b9409b57d562cf715af2837749d203d6",
+          "log_index": 7,
+          "start_block": 17266004,
+          "start_time_utc": "2023-05-15T15:15:59+00:00",
+          "transaction_hash": "0x592d68a259af899fb435da0ac08c2fd500cb423f37f1d8ce8e3120cb84186b21"
+        }
+      ],
+      "passed": true,
+      "proxy_code_sha256": "6490ced9ee4f0d8815f8c24a7d40acb40cb27cd7ef0fdab57289406d7ef96abc",
+      "raw_upgrade_event_count": 2,
+      "source": "https://github.com/lidofinance/core/blob/master/contracts/0.8.9/proxy/OssifiableProxy.sol"
+    }
+  ],
+  "schema_version": 1
+}

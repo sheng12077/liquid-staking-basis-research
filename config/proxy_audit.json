@@ -1,0 +1,49 @@
+{
+  "audit_end_block": 26421585,
+  "direct_contracts": [
+    {
+      "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "deployment_block": 11888477,
+      "id": "lido_wsteth",
+      "source": "https://github.com/lidofinance/core/blob/master/contracts/0.6.12/WstETH.sol"
+    },
+    {
+      "address": "0xDC24316b9AE028F1497c275EB9192a3Ea0f67022",
+      "deployment_block": 11592551,
+      "id": "curve_steth_eth_legacy",
+      "source": "https://github.com/curvefi/curve-contract/blob/master/contracts/pools/steth/StableSwapSTETH.vy"
+    },
+    {
+      "address": "0x828b154032950C8ff7CF8085D841723Db2696056",
+      "deployment_block": 14759666,
+      "id": "curve_steth_weth_concentrated",
+      "source": "https://docs.curve.finance/developer/integration/stableswap-ng/"
+    }
+  ],
+  "proxies": [
+    {
+      "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+      "app_id": "0x3ca7c3e38968823ccb4c78ea688df41356f182ae1d159e4ee608d30d68cef320",
+      "dataset_id": "lido_kernel_set_app_history",
+      "deployment_block": 11473216,
+      "event_topic0": "0x2ec1ae0a449b7ae354b9dacfb3ade6b6332ba26b7fcbb935835fa39dd7263b23",
+      "id": "lido_steth",
+      "kernel_address": "0xb8FFC3Cd6e7Cf5a098A1c92F48009765B24088Dc",
+      "namespace": "0xf1f3eb40f5bc1ad1344716ced8b8a0431d840b5783aea1fd01786bc26f35ac0f",
+      "resolver": "aragon_implementation_call",
+      "selector": "0x5c60da1b",
+      "source": "https://github.com/aragon/aragonOS/blob/next/contracts/apps/AppProxyUpgradeable.sol"
+    },
+    {
+      "address": "0x889edC2eDab5f40e902b864aD4d7AdE8E412F9B1",
+      "dataset_id": "lido_withdrawal_queue_upgrades",
+      "deployment_block": 17172547,
+      "event_topic0": "0xbc7cd75a20ee27fd9adebab32041f755214dbc6bffa90cc0225b39da2e5c2d3b",
+      "id": "lido_withdrawal_queue",
+      "resolver": "eip1967_storage",
+      "slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+      "source": "https://github.com/lidofinance/core/blob/master/contracts/0.8.9/proxy/OssifiableProxy.sol"
+    }
+  ],
+  "schema_version": 1
+}
