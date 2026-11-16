@@ -1,0 +1,32 @@
+{
+  "audit_end_block": 26421585,
+  "boundary_max_relative_jump": 0.05,
+  "contracts": {
+    "curve_concentrated": {
+      "address": "0x828b154032950C8ff7CF8085D841723Db2696056",
+      "coin_0": "WETH",
+      "coin_1": "stETH",
+      "deployment_block": 14759666,
+      "get_dy_selector": "0x5e0d443f"
+    },
+    "curve_legacy": {
+      "address": "0xDC24316b9AE028F1497c275EB9192a3Ea0f67022",
+      "coin_0": "ETH",
+      "coin_1": "stETH",
+      "deployment_block": 11592551,
+      "get_dy_selector": "0x5e0d443f"
+    },
+    "wsteth": {
+      "address": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "deployment_block": 11888477,
+      "steth_per_token_selector": "0x035faf82"
+    }
+  },
+  "dataset_id": "lido_curve_daily_state_v1",
+  "end_date": "2026-11-15",
+  "input_amount_wei": 1000000000000000000,
+  "observation_rule": "last_block_strictly_before_00_00_00_utc",
+  "schema_version": 1,
+  "start_date": "2021-01-06",
+  "steth_intervals": "docs/proxy_implementation_intervals.json"
+}
