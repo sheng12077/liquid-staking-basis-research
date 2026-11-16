@@ -1,0 +1,13 @@
+{
+  "curve_legacy": {
+    "address": "0xDC24316b9AE028F1497c275EB9192a3Ea0f67022",
+    "get_dy_selector": "0x5e0d443f"
+  },
+  "dataset_id": "experiment_001_execution_state_v1",
+  "end_date": "2026-10-31",
+  "quote_input_wei": 10000000000000000000,
+  "priority_fee_wei": 2000000000,
+  "schema_version": 1,
+  "source_daily_state_path": "canonical/ethereum/lido_curve_daily_state_v1/daily_state.parquet",
+  "start_date": "2021-02-20"
+}
