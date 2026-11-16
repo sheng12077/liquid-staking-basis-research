@@ -14,9 +14,11 @@ lsb-data = "liquid_staking_basis.cli:main"
 lsb-experiment-state = "liquid_staking_basis.execution_state:main"
 lsb-experiment-001 = "liquid_staking_basis.experiment_001:main"
 lsb-experiment-002 = "liquid_staking_basis.experiment_002:main"
+lsb-figures = "liquid_staking_basis.visualization:main"
 
 [project.optional-dependencies]
 dev = ["mypy", "pytest", "pytest-cov", "ruff"]
+viz = ["matplotlib>=3.9,<4", "nbclient>=0.10,<1", "nbformat>=5.10,<6"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
