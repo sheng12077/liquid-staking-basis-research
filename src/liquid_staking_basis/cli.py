@@ -3,9 +3,11 @@ from __future__ import annotations
 import argparse
 import json
 import os
+from datetime import datetime
 from pathlib import Path
 
 from liquid_staking_basis.canonical import build_canonical_dataset
+from liquid_staking_basis.cex_audit import audit_cex_coverage
 from liquid_staking_basis.cost import estimate_cost
 from liquid_staking_basis.registry import discover_deployments, estimate_full_backfill
 from liquid_staking_basis.rpc import EthereumRpcClient, audit_dataset, fetch_logs
@@ -91,11 +93,38 @@ def build_parser() -> argparse.ArgumentParser:
     )
     canonical.add_argument("--dataset-id", required=True)
     canonical.add_argument("--data-root", type=Path)
+
+    cex_audit = subparsers.add_parser(
+        "audit-cex-coverage", help="Audit ETH CEX history and point-in-time alignment"
+    )
+    cex_audit.add_argument("--config", type=Path, default=Path("config/cex_data_audit.json"))
+    cex_audit.add_argument("--start")
+    cex_audit.add_argument("--end-exclusive")
+    cex_audit.add_argument("--data-root", type=Path)
+    cex_audit.add_argument("--output", type=Path)
     return parser
 
 
 def main() -> None:
     args = build_parser().parse_args()
+    if args.command == "audit-cex-coverage":
+        cex_config = json.loads(args.config.read_text(encoding="utf-8"))
+        start = args.start or cex_config["start"]
+        end_exclusive = args.end_exclusive or cex_config["end_exclusive"]
+        cex_result = audit_cex_coverage(
+            data_root(args.data_root),
+            datetime.fromisoformat(start.replace("Z", "+00:00")),
+            datetime.fromisoformat(end_exclusive.replace("Z", "+00:00")),
+        )
+        rendered = json.dumps(cex_result, indent=2, sort_keys=True) + "\n"
+        if args.output is not None:
+            args.output.parent.mkdir(parents=True, exist_ok=True)
+            args.output.write_text(rendered, encoding="utf-8")
+        print(rendered, end="")
+        if not cex_result["research_ready"]:
+            raise SystemExit(1)
+        return
+
     if args.command == "estimate":
         estimate_result = estimate_cost(
             args.start_block,
